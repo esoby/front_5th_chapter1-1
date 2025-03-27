@@ -1,27 +1,27 @@
-(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const s of document.querySelectorAll('link[rel="modulepreload"]'))m(s);new MutationObserver(s=>{for(const o of s)if(o.type==="childList")for(const i of o.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&m(i)}).observe(document,{childList:!0,subtree:!0});function p(s){const o={};return s.integrity&&(o.integrity=s.integrity),s.referrerPolicy&&(o.referrerPolicy=s.referrerPolicy),s.crossOrigin==="use-credentials"?o.credentials="include":s.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function m(s){if(s.ep)return;s.ep=!0;const o=p(s);fetch(s.href,o)}})();const r="/front_5th_chapter1-1",a={username:"test",email:"test@example.com",bio:"hi",password:"test"};let n={username:"",password:""},c={bio:""};const g=()=>`
+(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const s of document.querySelectorAll('link[rel="modulepreload"]'))u(s);new MutationObserver(s=>{for(const o of s)if(o.type==="childList")for(const n of o.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&u(n)}).observe(document,{childList:!0,subtree:!0});function b(s){const o={};return s.integrity&&(o.integrity=s.integrity),s.referrerPolicy&&(o.referrerPolicy=s.referrerPolicy),s.crossOrigin==="use-credentials"?o.credentials="include":s.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function u(s){if(s.ep)return;s.ep=!0;const o=b(s);fetch(s.href,o)}})();const p="/front_5th_chapter1-1",l={username:"test",email:"test@example.com",bio:"hi",password:"test"};let a={username:"",password:""},d={bio:""};const g=()=>`
       <header class="bg-blue-600 text-white p-4 sticky top-0">
         <h1 class="text-2xl font-bold">항해플러스</h1>
       </header>
 `,x=()=>localStorage.getItem("user")?`
       <nav class="bg-white shadow-md p-2 sticky top-14">
         <ul class="flex justify-around">
-          <li><a href="/${r}" class="text-blue-600">홈</a></li>
-          <li><a href="/${r}/profile" class="text-gray-600">프로필</a></li>
+          <li><a href="/" class="text-blue-600">홈</a></li>
+          <li><a href="/profile" class="text-gray-600">프로필</a></li>
           <li><button id="logout-button" href="#" class="text-gray-600">로그아웃</button></li>
         </ul>
       </nav>
 `:`
       <nav class="bg-white shadow-md p-2 sticky top-14">
         <ul class="flex justify-around">
-          <li><a href="/${r}" class="text-blue-600">홈</a></li>
-          <li><a href="/${r}/login" class="text-gray-600">로그인</a></li>
+          <li><a href="/" class="text-blue-600">홈</a></li>
+          <li><a href="/login" class="text-gray-600">로그인</a></li>
         </ul>
       </nav>
 `,h=()=>`
       <footer class="bg-gray-200 p-4 text-center">
         <p>&copy; 2024 항해플러스. All rights reserved.</p>
       </footer>
-`,d=e=>`
+`,i=e=>`
   <div class="bg-gray-100 min-h-screen flex justify-center">
     <div class="max-w-md w-full">
       ${g()}
@@ -32,7 +32,7 @@
       ${h()}
     </div>
   </div>
-`,f=()=>`
+`,m=()=>`
   <div class="mb-4 bg-white rounded-lg shadow p-4">
     <textarea class="w-full p-2 border rounded" placeholder="무슨 생각을 하고 계신가요?"></textarea>
     <button class="mt-2 bg-blue-600 text-white px-4 py-2 rounded">게시</button>
@@ -70,7 +70,7 @@
       </a>
     </div>
   </main>
-`,b=()=>`
+`,f=()=>`
   <main class="bg-gray-100 flex items-center justify-center min-h-screen">
     <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
       <h1 class="text-2xl font-bold text-center text-blue-600 mb-8">항해플러스</h1>
@@ -91,7 +91,7 @@
         <button class="bg-green-500 text-white px-4 py-2 rounded font-bold">새 계정 만들기</button>
       </div>
     </div>
-`,v=()=>{const e=localStorage.getItem("user");let t={};return e&&(t=JSON.parse(e),c={bio:t.bio}),`
+`,v=()=>{const e=localStorage.getItem("user");let t={};return e&&(t=JSON.parse(e),d={bio:t.bio}),`
           <div class="bg-white p-8 rounded-lg shadow-md">
             <h2 class="text-2xl font-bold text-center text-blue-600 mb-8">
               내 프로필
@@ -147,4 +147,4 @@
               </button>
             </form>
           </div>
-`},u=e=>{const t=document.getElementById("root");t.innerHTML=$(e)},l=e=>{window.history.pushState(null,"",e),u(e)},$=e=>{const t=localStorage.getItem("user");switch(e=e.split(r)[1],e){case"/":return d(f);case"/profile":return t?d(v):(l("/login"),b());case"/login":return t?(l("/"),d(f)):b();default:return y()}};window.addEventListener("load",()=>{u(window.location.pathname)});window.addEventListener("popstate",()=>{u(window.location.pathname)});document.body.addEventListener("click",e=>{if(e.target.tagName==="A"){e.preventDefault();const t=e.target.getAttribute("href");l(t)}e.target.id==="logout-button"&&(localStorage.removeItem("user"),l(`/${r}/login`))});document.body.addEventListener("input",e=>{e.target.id==="id-input"&&(n.username=e.target.value),e.target.id==="pw-input"&&(n.password=e.target.value),e.target.id==="bio"&&(c.bio=e.target.value)});document.body.addEventListener("submit",e=>{if(e.target.id==="login-form"&&(e.preventDefault(),a.username===n.username&&a.password===n.password?(localStorage.setItem("user",JSON.stringify(a)),l(`/${r}/profile`)):alert("로그인 실패!")),e.target.id==="profile-form"){e.preventDefault();const t={...a,...c};localStorage.setItem("user",JSON.stringify(t))}});
+`},c=e=>{const t=document.getElementById("root");t.innerHTML=I(e)},r=e=>{const t=p+e;window.history.pushState(null,"",t),c(e)},I=e=>{const t=localStorage.getItem("user");switch(e){case"/":return i(m);case"/profile":return t?i(v):(r("/login"),f());case"/login":return t?(r("/"),i(m)):f();default:return y()}};window.addEventListener("load",()=>{c(window.location.pathname)});window.addEventListener("popstate",()=>{c(window.location.pathname)});document.body.addEventListener("click",e=>{if(e.target.tagName==="A"){e.preventDefault();const t=e.target.getAttribute("href");r(t)}e.target.id==="logout-button"&&(localStorage.removeItem("user"),r("/login"))});document.body.addEventListener("input",e=>{e.target.id==="id-input"&&(a.username=e.target.value),e.target.id==="pw-input"&&(a.password=e.target.value),e.target.id==="bio"&&(d.bio=e.target.value)});document.body.addEventListener("submit",e=>{if(e.target.id==="login-form"&&(e.preventDefault(),l.username===a.username&&l.password===a.password?(localStorage.setItem("user",JSON.stringify(l)),r("/profile")):alert("로그인 실패!")),e.target.id==="profile-form"){e.preventDefault();const t={...l,...d};localStorage.setItem("user",JSON.stringify(t))}});
